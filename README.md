@@ -1,7 +1,9 @@
 # Scaling Bioacoustic Signal Pre-training with Million Samples Via Mask-Modeling
 
-<img src="./GPM-BT5.png" alt="GPM-BT5图片" width="300" height="250">
-<img src="./tSNE.png" alt="GPM-BT5图片" width="330" height="250">
+<div style="display: flex; justify-content: space-around;">  
+    <img src="./GPM-BT5.png" alt="GPM-BT5图片" style="width: 300px; height: 250px;">  
+    <img src="./tSNE.png" alt="tSNE图片" style="width: 330px; height: 250px;">  
+</div>
 
 
 We introduce GPM-BT (General Pre-training Model for Bioacoustic Tasks), a self-supervised, Transformer-based model pre-trained on approximately 1.2 million unannotated bioacoustic audio samples. GPM-BT achieves state-of-the-art performance on the [BEANS benchmark](https://github.com/earthspecies/beans) demonstrating a strong ability to represent and understand bioacoustic audio signals amidst complex background noises. See [our paper]() for more details.
