@@ -29,14 +29,14 @@ GPM-BT builds upon the research of [BEANS](https://github.com/earthspecies/beans
 
 
 4. Download the pre-trained model
-<table style="border-collapse: collapse; width: 65%;">  
+<table style="border-collapse: collapse; width: 70%;">  
 <thead>  
   <tr>  
-    <td style="border: 1px solid black; padding: 0;">pre-trained model</th>  
-    <td style="border: 1px solid black; padding: 0;">classification</th>  
-    <td style="border: 1px solid black; padding: 0;">detection</th>  
-    <td style="border: 1px solid black; padding: 0;">auxiliary</th>  
-	<td style="border: 1px solid black; padding: 0;">all</th>
+    <td style="border: 1px solid black; padding: 2;">pre-trained model</th>  
+    <td style="border: 1px solid black; padding: 2;">avg-classification</th>  
+    <td style="border: 1px solid black; padding: 2;">avg-detection</th>  
+    <td style="border: 1px solid black; padding: 2;">avg-auxiliary</th>  
+	<td style="border: 1px solid black; padding: 2;">avg-all</th>
   </tr>  
 </thead>  
 <tbody>  
