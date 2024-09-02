@@ -1,7 +1,7 @@
 # Scaling Bioacoustic Signal Pre-training with Million Samples Via Mask-Modeling
 
 <div style="display: flex; justify-content: space-around;">  
-    <img src="./GPM-BT5.png" alt="GPM-BT5图片" style="width: 380px; height: 300px;margin-right: 40px;">  
+    <img src="./GPM-BT5.png" alt="GPM-BT5图片" style="width: 420px; height: 360px;margin-right: 40px;">  
     <img src="./tSNE.png" alt="tSNE图片" style="width: 400px; height: 300px;">  
 </div>
 
