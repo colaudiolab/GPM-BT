@@ -21,7 +21,7 @@ local['mkdir']['-p', 'logs']()
 # ]
 
 MODELS = [
-    ('ssast', 'ssast', ''),
+    ('GPM-BT', 'GPM-BT', ''),
 ]
 
 TASKS = [
@@ -65,8 +65,8 @@ for model_name, model_type, model_params in MODELS:
                     '--lrs', '[1e-5, 5e-5, 1e-4, 5e-4]',
                     '--log-path', log_path,
                     '--num-workers', '16',
-                    '--data-dictory-path', '/data/directory/path/beans-main/scripts/',
-                    '--load-pretrained-mdl-path', '/path/to/model.pth',
+                    '--data-directory-path', '/path/to/data/directory/',
+                    '--load-pretrained-mdl-path', '/path/to/pretrained/model.pth',
                     '--Patch-or-Frame', 'Frame'] & FG
         except ProcessExecutionError as e:
             print(e)

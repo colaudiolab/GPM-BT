@@ -207,7 +207,7 @@ class ClassificationDataset(Dataset):
         sample_rate,
         max_duration,
         feature_type,
-        data_dictory_path,
+        data_directory_path,
         dataAug_conf = None):
 
         super().__init__()
@@ -229,13 +229,13 @@ class ClassificationDataset(Dataset):
             self.noise = dataAug_conf['noise']
 
 
-        df = pd.read_csv(data_dictory_path + metadata_path)
+        df = pd.read_csv(data_directory_path + metadata_path)
 
         self.xs = []
         self.ys = []
 
         for _, row in df.iterrows():
-            self.xs.append(data_dictory_path + row['path'])
+            self.xs.append(data_directory_path + row['path'])
 
             if row['label'] not in label_to_id:
                 if unknown_label is not None:
@@ -329,7 +329,7 @@ class RecognitionDataset(Dataset):
         window_width,
         window_shift,
         feature_type,
-        data_dictory_path,
+        data_directory_path,
         dataAug_conf = None):
 
         label_to_id = {lbl: i for i, lbl in enumerate(labels)}
@@ -359,10 +359,10 @@ class RecognitionDataset(Dataset):
         else:
             size_per_sec = int(1 / HOP_LENGTH_IN_SECS)
 
-        with open(data_dictory_path + metadata_path) as f:
+        with open(data_directory_path + metadata_path) as f:
             for line in f:
                 data = json.loads(line)
-                wav_path = data_dictory_path + data['path']
+                wav_path = data_directory_path + data['path']
                 length = data['length']
 
                 num_windows = int((length - window_width) / window_shift) + 1

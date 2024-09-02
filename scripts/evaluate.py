@@ -197,7 +197,7 @@ def train_pytorch_model(
                 num_classes=num_labels,
                 multi_label=(args.task=='detection')).to(device)
 
-        elif args.model_type == 'ssast':
+        elif args.model_type == 'GPM-BT':
             model = ASTModel(label_dim=num_labels, fshape=fshape, tshape=tshape, fstride=fstride, tstride=tstride,
                        input_fdim=128, input_tdim=input_tdim, model_size='base', pretrain_stage=False,
                        load_pretrained_mdl_path=args.load_pretrained_mdl_path).to(device)
@@ -293,13 +293,13 @@ def main():
         'resnet18', 'resnet18-pretrained',
         'resnet50', 'resnet50-pretrained',
         'resnet152', 'resnet152-pretrained',
-        'vggish', 'ssast'])
+        'vggish', 'GPM-BT'])
     parser.add_argument('--dataset', choices=datasets.keys())
     parser.add_argument('--num-workers', type=int, default=4)
     parser.add_argument('--stop-shuffle', action='store_true')
     parser.add_argument('--log-path', type=str)
 
-    parser.add_argument('--data-dictory-path', type=str)
+    parser.add_argument('--data-directory-path', type=str)
     parser.add_argument('--load-pretrained-mdl-path', type=str)
     parser.add_argument('--Patch-or-Frame', type=str, choices=['Patch', 'Frame'], default='Patch')
     args = parser.parse_args()
@@ -321,7 +321,7 @@ def main():
     elif args.model_type.startswith('resnet'):
         feature_type = 'melspectrogram'
 
-    elif args.model_type == 'ssast':
+    elif args.model_type == 'GPM-BT':
         feature_type = 'fbank'
     else:
         feature_type = 'mfcc'
@@ -338,7 +338,7 @@ def main():
             sample_rate=dataset['sample_rate'],
             max_duration=dataset['max_duration'],
             feature_type=feature_type,
-            data_dictory_path=args.data_dictory_path,
+            data_directory_path=args.data_directory_path,
             dataAug_conf = dataset['dataAug_conf'])
         dataset_valid = ClassificationDataset(
             metadata_path=dataset['valid_data'],
@@ -348,7 +348,7 @@ def main():
             sample_rate=dataset['sample_rate'],
             max_duration=dataset['max_duration'],
             feature_type=feature_type,
-            data_dictory_path=args.data_dictory_path)
+            data_directory_path=args.data_directory_path)
         dataset_test = ClassificationDataset(
             metadata_path=dataset['test_data'],
             num_labels=num_labels,
@@ -357,7 +357,7 @@ def main():
             sample_rate=dataset['sample_rate'],
             max_duration=dataset['max_duration'],
             feature_type=feature_type,
-            data_dictory_path=args.data_dictory_path)
+            data_directory_path=args.data_directory_path)
 
     elif dataset['type'] == 'detection':
         dataset_train = RecognitionDataset(
@@ -370,7 +370,7 @@ def main():
             window_width=dataset['window_width'],
             window_shift=dataset['window_shift'],
             feature_type=feature_type,
-            data_dictory_path=args.data_dictory_path,
+            data_directory_path=args.data_directory_path,
             dataAug_conf = dataset['dataAug_conf'])
         dataset_valid = RecognitionDataset(
             metadata_path=dataset['valid_data'],
@@ -382,7 +382,7 @@ def main():
             window_width=dataset['window_width'],
             window_shift=dataset['window_shift'],
             feature_type=feature_type,
-            data_dictory_path=args.data_dictory_path)
+            data_directory_path=args.data_directory_path)
         dataset_test = RecognitionDataset(
             metadata_path=dataset['test_data'],
             num_labels=num_labels,
@@ -393,7 +393,7 @@ def main():
             window_width=dataset['window_width'],
             window_shift=dataset['window_shift'],
             feature_type=feature_type,
-            data_dictory_path=args.data_dictory_path)
+            data_directory_path=args.data_directory_path)
     else:
         raise ValueError(f"Invalid dataset type: {dataset['type']}")
 
